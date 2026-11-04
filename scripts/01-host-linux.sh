@@ -16,7 +16,7 @@ fi
 if has rpm; then
   check "Installed core package versions" bash -c "rpm -qa | grep -Ei '^(kernel|glibc|openssl|openssh|curl|nginx|httpd|plesk|php)' | sort | head -n 120"
 elif has dpkg-query; then
-  check "Installed core package versions" bash -c "dpkg-query -W -f='${binary:Package} ${Version}\n' | grep -Ei '^(linux-image|libc6|openssl|openssh|curl|nginx|apache2|php)' | head -n 120"
+  check "Installed core package versions" bash -c "dpkg-query -W | grep -Ei '^(linux-image|libc6|openssl|openssh|curl|nginx|apache2|php)' | head -n 120"
 fi
 if has dnf; then
   check "Cached security advisories (no repo refresh)" dnf --cacheonly updateinfo list security
