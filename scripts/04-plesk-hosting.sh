@@ -12,7 +12,7 @@ fi
 if has rpm; then
   check "Plesk and sw-engine packages" bash -c "rpm -qa | grep -Ei '^(plesk|sw-engine|psa-|php[0-9]|plesk-php)' | sort | head -n 140"
 elif has dpkg-query; then
-  check "Plesk and sw-engine packages" bash -c "dpkg-query -W -f='${binary:Package} ${Version}\n' 2>/dev/null | grep -Ei '^(plesk|sw-engine|psa-)' | head -n 140"
+  check "Plesk and sw-engine packages" bash -c "dpkg-query -W 2>/dev/null | grep -Ei '^(plesk|sw-engine|psa-)' | head -n 140"
 fi
 if has systemctl; then
   check "Panel service status" systemctl is-active sw-cp-server
