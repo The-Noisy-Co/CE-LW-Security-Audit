@@ -18,7 +18,7 @@ fi
 if has rpm; then
   check "Installed DB package versions" bash -c "rpm -qa | grep -Ei 'mariadb|mysql|postgres|redis' | sort | head -n 100"
 elif has dpkg-query; then
-  check "Installed DB package versions" bash -c "dpkg-query -W -f='${binary:Package} ${Version}\n' 2>/dev/null | grep -Ei 'mariadb|mysql|postgres|redis' | head -n 100"
+  check "Installed DB package versions" bash -c "dpkg-query -W 2>/dev/null | grep -Ei 'mariadb|mysql|postgres|redis' | head -n 100"
 fi
 note "No SQL queries are run; no credentials, grants, schema, table data or database content are exported."
 note "Review DBA accounts, remote exposure, TLS, backups and least privilege through approved database administration."
